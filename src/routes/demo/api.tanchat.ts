@@ -22,7 +22,7 @@ export const Route = createFileRoute('/demo/api/tanchat')({
           const tools = await getTools()
 
           const result = await streamText({
-            model: anthropic('claude-3-5-sonnet-latest'),
+            model: anthropic('claude-sonnet-4-0'),
             messages: convertToModelMessages(messages),
             temperature: 0.7,
             stopWhen: stepCountIs(5),
