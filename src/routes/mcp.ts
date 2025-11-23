@@ -65,7 +65,8 @@ server.registerTool(
 		title: "Show a guitar",
 		description: "Show a guitar product from the database",
 		inputSchema: {
-			id: z.number() as any,
+			// @ts-ignore - Zod schema works at runtime
+			id: z.number().describe("The id of the guitar to show"),
 		},
 		_meta: {
 			"openai/outputTemplate": "ui://widget/show-guitar.html",
