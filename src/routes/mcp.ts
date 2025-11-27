@@ -65,7 +65,6 @@ server.registerTool(
 		title: "Show a guitar",
 		description: "Show a guitar product from the database",
 		inputSchema: {
-			// @ts-ignore - Zod schema works at runtime
 			id: z.number().describe("The id of the guitar to show"),
 		},
 		_meta: {
@@ -74,7 +73,7 @@ server.registerTool(
 			"openai/toolInvocation/invoked": "Showed a guitar!",
 		},
 	},
-	async ({ id }: any) => {
+	async ({ id }) => {
 		const guitar = guitars.find((guitar) => guitar.id === +id);
 		if (!guitar) {
 			return {

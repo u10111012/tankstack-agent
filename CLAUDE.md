@@ -90,3 +90,10 @@ Configured for Cloudflare Workers deployment:
 - `wrangler.jsonc`: Deployment configuration
 - Uses `nodejs_compat` compatibility flag
 - Entry point: `@tanstack/react-start/server-entry`
+
+## Active Technologies
+- TypeScript 5.x (strict mode) + TanStack Start, TanStack Router, TanStack Store, TanStack Query, shadcn/ui, Tailwind CSS v4 (001-water-reminder)
+- localStorage for client-side persistence (no backend database required) (001-water-reminder)
+
+## Recent Changes
+- 001-water-reminder: Added TypeScript 5.x (strict mode) + TanStack Start, TanStack Router, TanStack Store, TanStack Query, shadcn/ui, Tailwind CSS v4
