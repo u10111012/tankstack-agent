@@ -19,6 +19,17 @@ pnpm dev:backend
 
 Make sure to replace `__REPLACE_WITH_D1_ID__` in `wrangler.jsonc` with your real D1 database id before deploying.
 
+## Migrations & type generation
+
+`drizzle.config.ts` is configured for the D1 HTTP driver. Provide the required credentials before running any Drizzle CLI commands:
+
+```bash
+export D1_DATABASE_ID=your_d1_database_id
+export CLOUDFLARE_ACCOUNT_ID=your_account_id
+export CLOUDFLARE_API_TOKEN=your_api_token
+pnpm db:generate
+```
+
 ## Internal networking
 
 To keep the API private, expose only the `/internal/*` routes and reach them from the frontend Worker via a [service binding](https://developers.cloudflare.com/workers/platform/bindings/services/). This prevents public internet access while still allowing zero-latency calls from the TanStack frontend runtime.
