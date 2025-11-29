@@ -1,4 +1,12 @@
-Welcome to your new TanStack app! 
+Welcome to your new TanStack app!
+
+## Project layout
+
+- `frontend/`: TanStack Start app (Vite) with widgets and tests.
+- `backend/`: Cloudflare Worker API built with Hono, Drizzle, and D1.
+- `docs/`: Architecture and deployment research notes.
+
+See [`docs/cloudflare-fullstack.md`](docs/cloudflare-fullstack.md) for the Cloudflare-first plan and private API guidelines.
 
 # Getting Started
 
