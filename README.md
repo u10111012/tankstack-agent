@@ -1,4 +1,12 @@
-Welcome to your new TanStack app! 
+Welcome to your new TanStack app!
+
+## Project layout
+
+- `frontend/`: TanStack Start app (Vite) with widgets and tests.
+- `backend/`: Cloudflare Worker API built with Hono, Drizzle, and D1.
+- `docs/`: Architecture and deployment research notes.
+
+See [`docs/cloudflare-fullstack.md`](docs/cloudflare-fullstack.md) for the Cloudflare-first plan and private API guidelines.
 
 # Getting Started
 
@@ -6,7 +14,10 @@ To run this application:
 
 ```bash
 pnpm install
-pnpm start
+# Frontend (TanStack Start)
+pnpm dev:frontend
+# Backend API (Hono + D1)
+pnpm dev:backend
 ```
 
 # Building For Production
@@ -54,7 +65,7 @@ pnpx shadcn@latest add button
 ## T3Env
 
 - You can use T3Env to add type safety to your environment variables.
-- Add Environment variables to the `src/env.mjs` file.
+- Add Environment variables to `frontend/src/env.ts` so both client and server runtime access stay typed.
 - Use the environment variables in your code.
 
 ### Usage

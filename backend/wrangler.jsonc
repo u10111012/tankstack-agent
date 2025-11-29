@@ -1,0 +1,17 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "tankstack-hono-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-09-02",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tankstack-agent",
+      "database_id": "__REPLACE_WITH_D1_ID__"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
