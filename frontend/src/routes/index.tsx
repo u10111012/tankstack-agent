@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { useQuery } from '@tanstack/react-query'
 import {
   Zap,
   Server,
@@ -7,10 +8,17 @@ import {
   Waves,
   Sparkles,
 } from 'lucide-react'
+import { fetchHealth } from '@/lib/internal-api'
 
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
+    queryKey: ['health'],
+    queryFn: fetchHealth,
+    refetchOnWindowFocus: false,
+  })
+
   const features = [
     {
       icon: <Zap className="w-12 h-12 text-cyan-400" />,
@@ -76,6 +84,41 @@ function App() {
             Build modern applications with server functions, streaming, and type
             safety.
           </p>
+          <div className="max-w-xl mx-auto mb-10">
+            <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-4 text-left shadow-lg shadow-cyan-500/5">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-sm text-gray-400">API Health</p>
+                  <p className="text-2xl font-semibold text-white">
+                    {isLoading
+                      ? 'Checking…'
+                      : isError
+                        ? 'Unavailable'
+                        : data?.status === 'ok'
+                          ? 'Online'
+                          : 'Unknown'}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {data?.timestamp
+                      ? `Updated ${new Date(data.timestamp).toLocaleString()}`
+                      : 'Awaiting response'}
+                  </p>
+                  {data?.internalApiBase ? (
+                    <p className="text-xs text-gray-500 mt-2">
+                      Target: {data.internalApiBase}
+                    </p>
+                  ) : null}
+                </div>
+                <button
+                  className="px-3 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 text-white font-medium rounded-lg transition-colors disabled:bg-cyan-900 disabled:text-gray-400"
+                  disabled={isFetching}
+                  onClick={() => refetch()}
+                >
+                  {isFetching ? 'Refreshing…' : 'Refresh'}
+                </button>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-col items-center gap-4">
             <a
               href="https://tanstack.com/start"
